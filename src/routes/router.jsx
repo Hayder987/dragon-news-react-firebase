@@ -4,6 +4,7 @@ import ErrorPage from "../pages/ErrorPage";
 import Home from "../pages/Home";
 import About from "../pages/About";
 import Career from "../pages/Career";
+import CardDetails from "../components/HomeComponents/main/CardDetails";
 
 const router= createBrowserRouter([
     {
@@ -13,7 +14,14 @@ const router= createBrowserRouter([
         children:[
             {
                 path:"/",
-                element: <Home></Home>
+                element: <Home></Home>,
+                children:[
+                    {
+                        path:"/category/:id",
+                        element:<CardDetails></CardDetails>,
+                        loader:({params})=> fetch(`https://openapi.programming-hero.com/api/news/category/${params.id}`)
+                    }
+                ]
             },
             {
                 path:"/about",
