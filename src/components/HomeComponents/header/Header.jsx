@@ -1,6 +1,7 @@
 import moment from 'moment';
 import logo from '../../../assets/logo.png'
 import HeaderMarquee from './HeaderMarquee';
+import NavBar from './NavBar';
 
 const Header = () => {
     return (
@@ -12,6 +13,9 @@ const Header = () => {
             <h3 className="text-center font-medium text-xl">{moment().format('MMMM Do YYYY, h:mm:ss a')}</h3>
             <div className="mt-4">
                 <HeaderMarquee></HeaderMarquee>
+            </div>
+            <div className="">
+                <NavBar></NavBar>
             </div>
         </div>
     );
