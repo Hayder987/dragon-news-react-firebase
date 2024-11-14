@@ -3,21 +3,23 @@ import PropTypes from "prop-types";
 import { FaEye, FaRegBookmark } from "react-icons/fa";
 import { IoShareSocialOutline } from "react-icons/io5";
 import ReactStars from "react-rating-stars-component";
+import { useNavigate } from "react-router-dom";
 
 
 const Card = ({item}) => {
+  const navigate = useNavigate();
     const {
-      category_id,
+      _id,
       rating: { badge },
       total_view,
       title,
       author: { name, published_date, img },
-      thumbnail_url,
+      image_url,
       details,
     } = item;
     
     return (
-        <div className="border">
+        <div onClick={()=>navigate(`/news/${_id}`)} className="border">
            <div className="flex justify-between items-center p-6 bg-gray-100">
                <div className="flex gap-3 items-center">
                   <div className="">
@@ -38,7 +40,7 @@ const Card = ({item}) => {
                 <h3 className="py-4 px-2 text-xl font-bold">{title}</h3>
                </div>
                <div className="mb-3">
-                <img src={thumbnail_url} alt="" className="w-full h-[420px] object-cover" />
+                <img src={image_url} alt="" className="w-full object-cover" />
                </div>
                <div className="mb-4">
                  <p className="text-gray-500">{details.slice(0, 220)} ...</p>

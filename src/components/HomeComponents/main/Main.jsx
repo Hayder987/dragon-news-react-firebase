@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import LeftSideCategory from "./LeftSideCategory";
 import { Outlet } from "react-router-dom";
-import SocialLogin from "./SocialLogin";
+import RightSideBar from "./RightSideBar";
 
 
 const Main = () => {
@@ -13,8 +13,7 @@ const Main = () => {
       .then(res=> res.json())
       .then(data=> setCategory(data.data.news_category))
     },[])
-
-
+  
 
     return (
         <div className="grid grid-cols-12 gap-8 relative">
@@ -27,10 +26,7 @@ const Main = () => {
            <div className="grid col-span-12 row-start-1 md:col-span-3 md:row-span-3">
             <div className="">
                 <div className="">
-                  <h1 className="text-xl font-semibold mb-5">Login With</h1>
-                </div>
-                <div className="">
-                  <SocialLogin></SocialLogin>
+                  <RightSideBar></RightSideBar>
                 </div>
             </div>
            </div>

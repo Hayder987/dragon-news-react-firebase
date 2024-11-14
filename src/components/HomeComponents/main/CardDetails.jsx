@@ -5,7 +5,6 @@ import Card from "./Card";
 const CardDetails = () => {
      
     const data = useLoaderData();
-    console.log(data.data)
 
     return (
         <div>
