@@ -30,7 +30,10 @@ const NavBar = () => {
                 </ul>
             </div>
             <div className="flex justify-center items-center gap-3">
-            <p className="text-4xl"><BsPersonCircle /></p>
+            {
+                user? <img src={user.photoURL} alt="" className="w-12 h-12 rounded-full" />:
+                <p className="text-4xl"><BsPersonCircle /></p>
+            }
             {
                 user ? <button onClick={signOutHandler} className="bg-black py-3 px-6 text-white font-semibold">
                 Logout

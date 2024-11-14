@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 
 const Register = () => {
     const {pathname} = useLocation();
-    const { registerUser} = useContext(AuthContext)
+    const { registerUser, updateUserData} = useContext(AuthContext)
     const [success, setSuccess] = useState(null);
     const [error, setError] = useState(null)
     const navigate = useNavigate()
@@ -24,6 +24,7 @@ const Register = () => {
 
         registerUser(email,password)
         .then(()=>{
+          updateUserData(name, imgPath)
           toast.success("User Created SuccessFully")
           setSuccess("User Created SuccessFully")
           navigate("/login")
@@ -32,8 +33,9 @@ const Register = () => {
           setError(err.message)
         });
 
-        
+
     }
+
 
     return (
         <div>

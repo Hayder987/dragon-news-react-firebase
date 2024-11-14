@@ -19,10 +19,10 @@ const FindUs = () => {
                 <span className="text-xl">Instagram</span>
                </button>
              </div>
-             <div className="mt-12 min-w-full min-h-64 bg-gray-200">
+             <div className="mt-12 min-w-full hidden md:flex min-h-64 bg-gray-200">
                 <p className="text-center text-gray-400 p-10">Ads Area</p>
              </div>
-             <div className="mt-12 min-w-full min-h-64 bg-gray-200">
+             <div className="mt-12 min-w-full hidden md:flex min-h-64 bg-gray-200">
                 <p className="text-center text-gray-400 p-10">Ads Area</p>
              </div>
         </div>
