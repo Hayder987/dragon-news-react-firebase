@@ -9,6 +9,7 @@ import NewsDetails from "../pages/NewsDetails";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import PrivateRoute from "../private/PrivateRoute";
+import ForgetPassword from "../pages/ForgetPassword";
 
 const router= createBrowserRouter([
     {
@@ -51,7 +52,12 @@ const router= createBrowserRouter([
             {
                 path:"/register",
                 element:<Register></Register>
+            },
+            {
+                path:"/reset",
+                element:<ForgetPassword></ForgetPassword>
             }
+            
         ]
     }
 ]);

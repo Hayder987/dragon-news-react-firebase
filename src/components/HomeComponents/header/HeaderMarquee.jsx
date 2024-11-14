@@ -19,7 +19,7 @@ const HeaderMarquee = () => {
               <div className="flex gap-10">
                 {
                   data.map(item=>(
-                    <p key={item._id} className="">{item.title}</p>
+                    <p key={item._id} className="font-semibold text-xl text-gray-600">{item.title}</p>
                   ))
                 }
               </div>
