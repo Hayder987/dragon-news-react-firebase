@@ -3,6 +3,7 @@ import NavBar from "../components/HomeComponents/header/NavBar";
 import { useContext, useState } from "react";
 import { AuthContext } from "../contexApi/AuthProvider";
 import { toast } from "react-toastify";
+import SocialLogin from "../components/HomeComponents/main/SocialLogin";
 
 
 const Login = () => {
@@ -38,7 +39,8 @@ const Login = () => {
             {
                 pathname ==="/login" && <NavBar></NavBar>
             }
-            <div className="flex justify-center mt-12">
+            <div className="mt-12 flex flex-col md:flex-row">
+            <div className="flex justify-center md:w-9/12 mb-6">
                   <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
                     <form onSubmit={logInHandler} className="card-body">
                       <div className="form-control">
@@ -72,6 +74,10 @@ const Login = () => {
                     </div>
                     </form>
                   </div>
+            </div>
+            <div className="md:w-3/12 mb-6">
+              <SocialLogin></SocialLogin>
+            </div>
             </div>
         </div>
     );
