@@ -1,18 +1,35 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import NavBar from "../components/HomeComponents/header/NavBar";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../contexApi/AuthProvider";
+import { toast } from "react-toastify";
 
 
 const Login = () => {
     const {pathname} = useLocation();
     const {loginUser} = useContext(AuthContext)
+    const [error, setError] = useState(null)
+    const navigate = useNavigate()
 
     const logInHandler = e =>{
        e.preventDefault();
       const email = e.target.email.value;
       const password = e.target.password.value;
+   
+      setError("")
       
+      if(password.length<6){
+        setError("Password must be 6 digit")
+        return
+      }
+      loginUser(email, password)
+      .then(()=>{
+        toast.success("Login SuccessFully!")
+        navigate("/")
+      })
+      .catch(err=>{
+        setError(err.message)
+      })
       
     }
 
@@ -48,6 +65,11 @@ const Login = () => {
                             <span className="text-blue-500 underline"> Register Now</span>
                         </Link>
                       </div>
+                      <div className="form-control mt-6">
+                       {
+                        error && <p className="text-red-500">{error}</p>
+                       }
+                    </div>
                     </form>
                   </div>
             </div>

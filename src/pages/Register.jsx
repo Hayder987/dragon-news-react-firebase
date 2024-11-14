@@ -21,6 +21,7 @@ const Register = () => {
       
         setSuccess("")
         setError("")
+
         registerUser(email,password)
         .then(()=>{
           toast.success("User Created SuccessFully")
@@ -29,7 +30,9 @@ const Register = () => {
         })
         .catch(err=>{
           setError(err.message)
-        })
+        });
+
+        
     }
 
     return (
