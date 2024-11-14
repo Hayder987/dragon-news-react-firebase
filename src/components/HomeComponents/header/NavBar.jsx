@@ -23,13 +23,14 @@ const NavBar = () => {
         <div className="flex justify-between items-center p-6">
             <div className=""></div>
             <div className="">
-                <ul className="flex gap-10">
+                <ul className="flex gap-3 md:gap-10">
                     <NavLink to="/">Home</NavLink>
                     <NavLink to="/about">About</NavLink>
                     <NavLink to="/career">Career</NavLink>
                 </ul>
             </div>
             <div className="flex justify-center items-center gap-3">
+                <h1 className="hidden md:flex text-2xl font-medium">{user?.displayName}</h1>
             {
                 user? <img src={user.photoURL} alt="" className="w-12 h-12 rounded-full" />:
                 <p className="text-4xl"><BsPersonCircle /></p>
