@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { BsPersonCircle } from "react-icons/bs";
 
 
@@ -15,9 +15,11 @@ const NavBar = () => {
             </div>
             <div className="flex justify-center items-center gap-3">
             <p className="text-4xl"><BsPersonCircle /></p>
+            <Link to="/login">
             <button className="bg-black py-3 px-6 text-white font-semibold">
                 Login
             </button>
+            </Link>
             </div>
         </div>
     );
