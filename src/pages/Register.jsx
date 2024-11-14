@@ -3,6 +3,7 @@ import NavBar from "../components/HomeComponents/header/NavBar";
 import { useContext, useState } from "react";
 import { AuthContext } from "../contexApi/AuthProvider";
 import { toast } from "react-toastify";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 
 const Register = () => {
@@ -11,6 +12,7 @@ const Register = () => {
     const [success, setSuccess] = useState(null);
     const [error, setError] = useState(null)
     const navigate = useNavigate()
+    const [eye,setEye] = useState(false)
 
     const registerHandler = e =>{
         e.preventDefault();
@@ -67,7 +69,10 @@ const Register = () => {
                       <label className="label">
                         <span className="label-text">Password</span>
                       </label>
-                      <input type="password" name="password" placeholder="password" className="input input-bordered" required />
+                      <input 
+                      type={eye?"text":"password"} 
+                      name="password" 
+                      placeholder="password" className="input input-bordered" required />
                       <label className="label">
                         <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                       </label>
@@ -90,6 +95,12 @@ const Register = () => {
                        }
                     </div>
                   </form>
+                  <button onClick={()=>setEye(!eye)} 
+                    className="absolute text-xl text-gray-700 right-12 top-[360px]">
+                      {
+                        eye?<span><FaEye /></span>:<FaEyeSlash />
+                      }
+                    </button>
                 </div>
              </div>
             
