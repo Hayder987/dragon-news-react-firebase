@@ -1,12 +1,12 @@
 import { useContext } from "react";
 import { AuthContext } from "../contexApi/AuthProvider";
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import { CirclesWithBar } from "react-loader-spinner";
 import PropTypes from "prop-types";
 
 
 const PrivateRoute = ({children}) => {
-
+    const {pathname} = useLocation()
     const {user, loading} = useContext(AuthContext)
 
     if(loading){
@@ -28,10 +28,9 @@ const PrivateRoute = ({children}) => {
         return children
     }
    
-
     return (
         <div>
-            <Navigate to="/login"></Navigate>
+            <Navigate state={pathname} to="/login"></Navigate>
         </div>
     );
 };

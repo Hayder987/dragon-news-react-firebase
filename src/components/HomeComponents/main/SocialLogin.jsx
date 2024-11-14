@@ -1,18 +1,19 @@
 import { useContext } from "react";
 import { AuthContext } from "../../../contexApi/AuthProvider";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 
 const SocialLogin = () => {
 
     const {googleSignIn, githubSignIn} = useContext(AuthContext)
     const navigate = useNavigate()
+    const { state} = useLocation()
 
     const googleLoginHandler=()=>{
         googleSignIn()
         .then(()=>{
-            navigate("/")
+           state? navigate(state): navigate("/")
             toast.success("Sign In SuccessFully")
         })
         .catch(err=>{
@@ -23,7 +24,7 @@ const SocialLogin = () => {
     const githubLoginHandler =()=>{
         githubSignIn()
         .then(()=>{
-            navigate("/")
+            state? navigate(state): navigate("/")
             toast.success("Sign In SuccessFully")
         })
         .catch(err=>{

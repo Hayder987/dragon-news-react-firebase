@@ -7,7 +7,7 @@ import SocialLogin from "../components/HomeComponents/main/SocialLogin";
 
 
 const Login = () => {
-    const {pathname} = useLocation();
+    const {pathname,state} = useLocation();
     const {loginUser} = useContext(AuthContext)
     const [error, setError] = useState(null)
     const navigate = useNavigate()
@@ -26,7 +26,8 @@ const Login = () => {
       loginUser(email, password)
       .then(()=>{
         toast.success("Login SuccessFully!")
-        navigate("/")
+       navigate(state?state: "/")
+        
       })
       .catch(err=>{
         setError(err.message)

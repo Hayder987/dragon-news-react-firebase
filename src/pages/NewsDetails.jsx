@@ -8,7 +8,6 @@ const NewsDetails = () => {
 
     const newsData = useLoaderData();
     const {image_url, title,details} = newsData.data[0] || [];
-    console.log(newsData.data)
 
     return (
         <div>
