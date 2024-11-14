@@ -1,9 +1,16 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import NavBar from "../components/HomeComponents/header/NavBar";
+import { useContext, useState } from "react";
+import { AuthContext } from "../contexApi/AuthProvider";
+import { toast } from "react-toastify";
 
 
 const Register = () => {
     const {pathname} = useLocation();
+    const { registerUser} = useContext(AuthContext)
+    const [success, setSuccess] = useState(null);
+    const [error, setError] = useState(null)
+    const navigate = useNavigate()
 
     const registerHandler = e =>{
         e.preventDefault();
@@ -11,8 +18,18 @@ const Register = () => {
         const imgPath = e.target.imgpath.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
-
-        console.log(name, imgPath, email, password)
+      
+        setSuccess("")
+        setError("")
+        registerUser(email,password)
+        .then(()=>{
+          toast.success("User Created SuccessFully")
+          setSuccess("User Created SuccessFully")
+          navigate("/login")
+        })
+        .catch(err=>{
+          setError(err.message)
+        })
     }
 
     return (
@@ -58,7 +75,15 @@ const Register = () => {
                              Have An Account?
                             <span className="text-blue-500 underline"> Login Now</span>
                         </Link>
-                      </div>
+                    </div>
+                    <div className="form-control mt-6">
+                       {
+                        success && <p className="text-green-500">{success}</p>
+                       }
+                       {
+                        error && <p className="text-red-500">{error}</p>
+                       }
+                    </div>
                   </form>
                 </div>
              </div>

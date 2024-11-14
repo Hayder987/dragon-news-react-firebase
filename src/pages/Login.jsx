@@ -1,15 +1,18 @@
 import { Link, useLocation } from "react-router-dom";
 import NavBar from "../components/HomeComponents/header/NavBar";
+import { useContext } from "react";
+import { AuthContext } from "../contexApi/AuthProvider";
 
 
 const Login = () => {
     const {pathname} = useLocation();
+    const {loginUser} = useContext(AuthContext)
 
     const logInHandler = e =>{
        e.preventDefault();
       const email = e.target.email.value;
       const password = e.target.password.value;
-
+      
       
     }
 
